@@ -1,0 +1,4 @@
+runtime: nodejs
+env: flex
+env_variables:
+  WEATHER_KEY: c19a75b33166036ceb5889a1f90b5dc6
