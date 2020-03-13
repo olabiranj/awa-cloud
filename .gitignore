@@ -10,8 +10,6 @@
 
 # production
 # /build
-/src
-/puclic
 
 # misc
 app.yaml
