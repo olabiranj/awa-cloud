@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getCity = (city) => dispatch => {
     axios
-        .get(`http://api.weatherstack.com/current?access_key=c19a75b33166036ceb5889a1f90b5dc6&query=${city}`)
+        .get(`//api.weatherstack.com/current?access_key=c19a75b33166036ceb5889a1f90b5dc6&query=${city}`)
         .then(res => {
             if (res.data.success === false) {
                 dispatch({
@@ -33,7 +33,7 @@ export const getCity = (city) => dispatch => {
 
 export const getCurrentCity = (city) => dispatch => {
     axios
-        .get(`http://api.weatherstack.com/current?access_key=c19a75b33166036ceb5889a1f90b5dc6&query=${city}`)
+        .get(`//api.weatherstack.com/current?access_key=c19a75b33166036ceb5889a1f90b5dc6&query=${city}`)
         .then(res => {
             console.log(res.data)
             if (res.data.success === false) {
