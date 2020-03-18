@@ -15,17 +15,15 @@ const Search = () => {
     }
     return(
         <div className="container col-lg-3 mt-4">
-            <form action="" method="post" onSubmit={submit}>
-                <div className="input-group mb-3">
-                    <input type="text" className="form-control"
+            <div className="container-s">
+                <form action="" onSubmit={submit}>
+                    <input type="text"
                         placeholder='Search City...'
                         value={input}
-                        onChange={e => setInput(e.target.value)} />
-                    <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
-                    </div>
-                </div>
-            </form>
+                        onChange={e => setInput(e.target.value)}/>
+                    <div className="search"></div>
+                </form>
+            </div>
         </div>
     )
 }

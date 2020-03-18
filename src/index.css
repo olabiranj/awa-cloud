@@ -1,71 +1,173 @@
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    margin-top: 10px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: url("/img/constructive_bg_04.jpg");
-    background-size: initial;
-    color: #47476b;
+    background-image: url("/img/Wether.png");
+    background-size: cover;
     height: 100%;
+    font-family: 'Comfortaa', cursive;
 }
-.row{
-    padding-left: 5px;
-    padding-right: 5px;
-    margin: 0;
+.div-down{
+	padding-top: 30px;
+	margin-top: 8px;
+	margin-left: -15px;
+	margin-right: -15px;
+	background-color: #145252;
+}
+.day{
+	display: -webkit-flex;
+	-webkit-justify-content: space-between;
+	-webkit-flex-wrap: wrap;
 }
 .bg{
     height: 500px;
     opacity: 0.2;
-    margin-top: 50px;
+	margin-top: 50px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 20px 80px 0 rgba(0, 0, 0, 0.19);
 }
 .bg-skeleton{
     height: 500px;
-    opacity: 0.8;
-    margin-top: 50px;
+    opacity: 0.2;
+    margin-top: 100px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 20px 80px 0 rgba(0, 0, 0, 0.19);
 }
 .bg2{
-    padding: 10px;
     height: 500px;
-    margin-top: -500px;
+	margin-top: -500px;
+	padding-top: 10px;
 }
-.png{
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 100px;
-    width: 100%;
-}
-.flag-7{
-    width: 79%;
-}
-.flag-3{
-    width: 20%;
-    height: 100px;
-}
-.flag-6{
-    width: 49%;
+.flag-2{
+    padding: 3px;
 }
 .line{
     border-left: 1px solid grey;
     padding-left: 13px;
 }
 .head{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 100px;
 }
-.header-text{
-    font-family: cursive;
-}
-p{
-    font-size: large;
-    margin-bottom: 3px;
-    font-family: cursive;
-}
+
 .skeleton{
     height: 30px;
     background: #e0e0eb;
     margin-bottom: 10px;
     margin-right: 6px;
 }
+
+/* search input styles */
+.container-s {
+	 position: absolute;
+	 margin: auto;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 width: 300px;
+     height: 100px;
+     margin-bottom: 1px;
+}
+ .container-s .search {
+	 position: absolute;
+	 margin: auto;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 width: 50px;
+	 height: 50px;
+	 background: rgb(87, 231, 231);
+	 border-radius: 50%;
+	 transition: all 1s;
+	 z-index: 4;
+	 box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+}
+ .container-s .search:hover {
+	 cursor: pointer;
+}
+ .container-s .search::before {
+	 content: "";
+	 position: absolute;
+	 margin: auto;
+	 top: 22px;
+	 right: 0;
+	 bottom: 0;
+	 left: 22px;
+	 width: 12px;
+	 height: 2px;
+	 background: white;
+	 transform: rotate(45deg);
+	 transition: all 0.5s;
+}
+ .container-s .search::after {
+	 content: "";
+	 position: absolute;
+	 margin: auto;
+	 top: -5px;
+	 right: 0;
+	 bottom: 0;
+	 left: -5px;
+	 width: 25px;
+	 height: 25px;
+	 border-radius: 50%;
+	 border: 2px solid white;
+	 transition: all 0.5s;
+}
+ .container-s input {
+	 font-family: 'Inconsolata', monospace;
+	 position: absolute;
+	 margin: auto;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 width: 30px;
+	 height: 30px;
+	 outline: none;
+	 border: none;
+	 background:rgb(87, 231, 231);
+	 color: white;
+	 text-shadow: 0 0 10px rgb(87, 231, 231);
+	 padding: 0 80px 0 20px;
+	 border-radius: 30px;
+	 box-shadow: 0 0 25px 0 rgb(87, 231, 231), 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+	 transition: all 1s;
+	 opacity: 0;
+	 z-index: 5;
+	 font-weight: bolder;
+	 letter-spacing: 0.1em;
+}
+ .container-s input:hover {
+	 cursor: pointer;
+}
+ .container-s input:focus {
+	 width: 300px;
+	 opacity: 1;
+	 cursor: text;
+}
+ .container-s input:focus ~ .search {
+	 right: -250px;
+	 background: #151515;
+	 z-index: 6;
+}
+ .container-s input:focus ~ .search::before {
+	 top: 0;
+	 left: 0;
+	 width: 25px;
+}
+ .container-s input:focus ~ .search::after {
+	 top: 0;
+	 left: 0;
+	 width: 25px;
+	 height: 2px;
+	 border: none;
+	 background: white;
+	 border-radius: 0%;
+	 transform: rotate(-45deg);
+}
+ .container-s input::placeholder {
+	 color: white;
+	 opacity: 0.5;
+	 font-weight: bolder;
+}
+
