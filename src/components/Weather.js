@@ -18,8 +18,6 @@ const Weather = () => {
                 (res) => {
                     dispatch(getCurrentCity(res.data.city))
                     setCurrent(res.data.city)
-                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3&q=${res.data.city}`)
-                    .then(res => console.log(res.data))
                 }
             )
             .catch((err) => {
@@ -194,7 +192,7 @@ const Weather = () => {
                     </> :
                     <>
                             <div className='text-center'>
-                                <p className='text-light'>Lagos</p>
+                                <p className='text-light'>{weather.city.location.name}</p>
                                 <h1 className='text-light head'>29&deg;</h1>
                                 <p className='text-light'>18&deg;/18&deg;</p>
                                 <img src="/weather/01-s.png" alt="" height='100' />

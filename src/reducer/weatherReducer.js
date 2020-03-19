@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
             };
         case 'GET_CURRENT_CITY':
             return {
-                city: [...action.payload],
+                city: [action.payload],
                 loading: false
             };
         case 'SET_CITY_LOADING':
