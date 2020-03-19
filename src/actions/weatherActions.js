@@ -33,21 +33,21 @@ export const getCity = (city) => dispatch => {
 
 export const getCurrentCity = (city) => dispatch => {
     axios
-        .get(`http://api.weatherstack.com/current?access_key=c19a75b33166036ceb5889a1f90b5dc6&query=${city}`)
+        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${935132}?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3`)
         .then(res => {
-            console.log(res.data)
-            if (res.data.success === false) {
+            // console.log(res.data)
+            if (res.data.Headline) {
+                dispatch({
+                    type: 'GET_CURRENT_CITY',
+                    payload: [city, res.data]
+                })
+            } else {
                 dispatch({
                     type: 'SET_CITY_LOADING'
                 })
                 dispatch({
                     type: 'SET_ERROR',
-                    payload: res.data.error.info
-                })
-            } else {
-                dispatch({
-                    type: 'GET_CURRENT_CITY',
-                    payload: res.data
+                    payload: 'Something went wrong'
                 })
             }
             
