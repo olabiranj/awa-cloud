@@ -33,7 +33,7 @@ export const getCity = (city) => dispatch => {
 
 export const getCurrentCity = (city) => dispatch => {
     axios
-        .get(`//api.weatherstack.com/current?access_key=c19a75b33166036ceb5889a1f90b5dc6&query=${city}`)
+        .get(`///api.weatherstack.com/current?access_key=c19a75b33166036ceb5889a1f90b5dc6&query=${city}`)
         .then(res => {
             console.log(res.data)
             

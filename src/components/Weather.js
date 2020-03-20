@@ -191,70 +191,74 @@ const Weather = () => {
                             </div>
                     </> :
                     <>
-                            <div className='text-center'>
-                                <p className='text-light'>Lagos</p>
-                                <h1 className='text-light head'>29&deg;</h1>
-                                <p className='text-light'>18&deg;/18&deg;</p>
-                                <img src="/weather/01-s.png" alt="" height='100' />
-                            </div>
-                            <div className='div-down text-center'>
-                                <div className="container day">
-                                    <div className="flag-2">
-                                        <p className='text-light'>Monday</p>
-                                    </div>
-                                    <div className="flag-2">
-                                        <img src="/weather/06-s.png" alt="" height='30' />
-                                    </div>
-                                    <div className="flag-2">
+                            {weather.city.map( city => (
+                                <>
+                                    <div className='text-center'>
+                                        <p className='text-light'>{city.location.name}</p>
+                                        <h1 className='text-light head'>{city.current.temperature}&deg;</h1>
                                         <p className='text-light'>18&deg;/18&deg;</p>
+                                        <img src="/weather/01-s.png" alt="" height='100' />
                                     </div>
-                                </div>
-                                <div className="container day">
-                                    <div className="flag-2">
-                                        <p className='text-light'>Tuesday</p>
-                                    </div>
-                                    <div className="flag-2">
-                                        <img src="/weather/06-s.png" alt="" height='30' />
-                                    </div>
-                                    <div className="flag-2">
-                                        <p className='text-light'>18&deg;/18&deg;</p>
-                                    </div>
-                                </div>
-                                <div className="container day">
-                                    <div className="flag-2">
-                                        <p className='text-light'>Wednesday</p>
-                                    </div>
-                                    <div className="flag-2">
-                                        <img src="/weather/06-s.png" alt="" height='30' />
-                                    </div>
-                                    <div className="flag-2">
-                                        <p className='text-light'>18&deg;/18&deg;</p>
-                                    </div>
-                                </div>
-                                <div className="container day">
-                                    <div className="flag-2">
-                                        <p className='text-light'>Thursday</p>
-                                    </div>
-                                    <div className="flag-2">
-                                        <img src="/weather/06-s.png" alt="" height='30' />
-                                    </div>
-                                    <div className="flag-2">
-                                        <p className='text-light'>18&deg;/18&deg;</p>
-                                    </div>
-                                </div>
-                                <div className="container day">
-                                    <div className="flag-2">
-                                        <p className='text-light'>Friday</p>
-                                    </div>
-                                    <div className="flag-2">
-                                        <img src="/weather/06-s.png" alt="" height='30' />
-                                    </div>
-                                    <div className="flag-2">
-                                        <p className='text-light'>18&deg;/18&deg;</p>
-                                    </div>
-                                </div>
+                                    <div className='div-down text-center'>
+                                        <div className="container day">
+                                            <div className="flag-2">
+                                                <p className='text-light'>Monday</p>
+                                            </div>
+                                            <div className="flag-2">
+                                                <img src="/weather/06-s.png" alt="" height='30' />
+                                            </div>
+                                            <div className="flag-2">
+                                                <p className='text-light'>18&deg;/18&deg;</p>
+                                            </div>
+                                        </div>
+                                        <div className="container day">
+                                            <div className="flag-2">
+                                                <p className='text-light'>Tuesday</p>
+                                            </div>
+                                            <div className="flag-2">
+                                                <img src="/weather/06-s.png" alt="" height='30' />
+                                            </div>
+                                            <div className="flag-2">
+                                                <p className='text-light'>18&deg;/18&deg;</p>
+                                            </div>
+                                        </div>
+                                        <div className="container day">
+                                            <div className="flag-2">
+                                                <p className='text-light'>Wednesday</p>
+                                            </div>
+                                            <div className="flag-2">
+                                                <img src="/weather/06-s.png" alt="" height='30' />
+                                            </div>
+                                            <div className="flag-2">
+                                                <p className='text-light'>18&deg;/18&deg;</p>
+                                            </div>
+                                        </div>
+                                        <div className="container day">
+                                            <div className="flag-2">
+                                                <p className='text-light'>Thursday</p>
+                                            </div>
+                                            <div className="flag-2">
+                                                <img src="/weather/06-s.png" alt="" height='30' />
+                                            </div>
+                                            <div className="flag-2">
+                                                <p className='text-light'>18&deg;/18&deg;</p>
+                                            </div>
+                                        </div>
+                                        <div className="container day">
+                                            <div className="flag-2">
+                                                <p className='text-light'>Friday</p>
+                                            </div>
+                                            <div className="flag-2">
+                                                <img src="/weather/06-s.png" alt="" height='30' />
+                                            </div>
+                                            <div className="flag-2">
+                                                <p className='text-light'>18&deg;/18&deg;</p>
+                                            </div>
+                                        </div>
 
-                            </div>
+                                    </div>
+                                </>
+                            ))}
                     </>
                 }
 
