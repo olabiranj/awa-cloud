@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
 // import { Offline, Online } from "react-detect-offline";
 
@@ -7,6 +6,7 @@ import Modal from './Modal';
 
 const Weather = () => {
     const weather = useSelector(state => state.weather);
+    const errMsg = useSelector(state => state.errMsg.errMsg);
     
     let [dayArr, setDayArr] = useState([]);
     useEffect(() => {

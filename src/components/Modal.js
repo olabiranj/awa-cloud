@@ -3,28 +3,16 @@ import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
 // import { Offline, Online } from "react-detect-offline";
 import { getCurrentCity } from "../actions/weatherActions";
-
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
-import { blue } from '@material-ui/core/colors';
-
-const emails = ['username@gmail.com', 'user02@gmail.com'];
-const useStyles = makeStyles({
-    avatar: {
-        backgroundColor: blue[100],
-        color: blue[600],
-    },
-});
 
 function SimpleDialog(props) {
     const modal = useSelector(state => state.modal.allCities);
     const dispatch = useDispatch();
-    const classes = useStyles();
     const { onClose, selectedValue, open } = props;
 
     const handleClose = () => {
@@ -61,20 +49,19 @@ const Modal = () => {
     const modal = useSelector(state => state.modal.hasContents);
     // const errMsg = useSelector(state => state.errMsg.errMsg);
     const dispatch = useDispatch();
-
-    const [manyCities, setManyCites] = React.useState([]);
     const [open, setOpen] = React.useState(false);
-    const [selectedValue, setSelectedValue] = React.useState(emails[1]);
 
     
 
     const handleClose = value => {
+        dispatch({
+            type: 'DELETE_CITIES'
+        })
         setOpen(false);
-        setSelectedValue(value);
     };
 
     useEffect(() => {
-        
+
         dispatch({
             type: 'SET_CITY_LOADING'
         })
@@ -93,8 +80,6 @@ const Modal = () => {
                                         payload: res.data
                                     })
                                     localStorage.setItem('city', `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`)
-                                    setOpen(true);
-                                    
                                 } else {
                                     console.log('maybe');
                                 }
@@ -112,7 +97,7 @@ const Modal = () => {
                     payload: 'Your current location could not be found, Kindly search for another city.'
                 })
             })
-        
+
     }, []
     )
 
@@ -122,7 +107,7 @@ const Modal = () => {
         <div>
             
             
-            <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
+            <SimpleDialog open={modal ? true : false} onClose={handleClose} />
         </div>
     )
 }
