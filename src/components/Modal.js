@@ -81,18 +81,18 @@ const Modal = () => {
         axios.get('https://extreme-ip-lookup.com/json')
             .then(
                 (res) => {
-                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3&q=ibadan`)
+                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3&q=${res.data.city}`)
                         .then(
                             (res) => {
                                 if (res.data.length === 1) {
-                                    localStorage.setItem('city', res.data[0].LocalizedName);
+                                    localStorage.setItem('city', `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`);
                                     dispatch(getCurrentCity(res.data[0].Key))
                                 } else if (res.data.length > 1) {
                                     dispatch({
                                         type: 'DISPLAY_CITIES',
                                         payload: res.data
                                     })
-                                    localStorage.setItem('city', res.data[0].LocalizedName)
+                                    localStorage.setItem('city', `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`)
                                     setOpen(true);
                                     
                                 } else {
