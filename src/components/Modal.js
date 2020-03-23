@@ -23,6 +23,7 @@ const useStyles = makeStyles({
 
 function SimpleDialog(props) {
     const modal = useSelector(state => state.modal.allCities);
+    const dispatch = useDispatch();
     const classes = useStyles();
     const { onClose, selectedValue, open } = props;
 
@@ -31,8 +32,8 @@ function SimpleDialog(props) {
     };
 
     const handleListItemClick = value => {
-        dispatch(getCurrentCity(res.data[0].Key))
-        onClose(value);
+        dispatch(getCurrentCity(value))
+        onClose(false);
     };
 
     return (
@@ -41,7 +42,7 @@ function SimpleDialog(props) {
             <List>
                 {modal.map(city => (
                     <>
-                        <ListItem button onClick={() => handleListItemClick(city.Key)} key={city}>
+                        <ListItem button onClick={() => handleListItemClick(city.Key)} >
                             <ListItemText primary={city.LocalizedName} secondary={city.Country.LocalizedName} />
                         </ListItem>
                         <Divider />
@@ -80,17 +81,18 @@ const Modal = () => {
         axios.get('https://extreme-ip-lookup.com/json')
             .then(
                 (res) => {
-                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3&q=ibadan`)
+                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3&q=lagos`)
                         .then(
                             (res) => {
                                 if (res.data.length === 1) {
-                                    localStorage.setItem('city', 'Ibadan');
+                                    localStorage.setItem('city', res.data[0].LocalizedName);
                                     dispatch(getCurrentCity(res.data[0].Key))
                                 } else if (res.data.length > 1) {
                                     dispatch({
                                         type: 'DISPLAY_CITIES',
                                         payload: res.data
                                     })
+                                    localStorage.setItem('city', res.data[0].LocalizedName)
                                     setOpen(true);
                                     
                                 } else {
