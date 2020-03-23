@@ -1,6 +1,7 @@
 const initialState = {
     city: [],
-    loading: false
+    loading: true,
+    current: localStorage.getItem('city')
 };
 
 export default function (state = initialState, action) {
@@ -8,12 +9,14 @@ export default function (state = initialState, action) {
         case 'GET_CITY':
             return {
                 city: [action.payload],
-                loading: false
+                loading: false, 
+                current: localStorage.getItem('city')
             };
         case 'GET_CURRENT_CITY':
             return {
                 city: [action.payload],
-                loading: false
+                loading: false,
+                current: localStorage.getItem('city')
             };
         case 'SET_CITY_LOADING':
             return {

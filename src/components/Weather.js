@@ -1,38 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
-import { Offline, Online } from "react-detect-offline";
-import { getCurrentCity } from "../actions/weatherActions";
+// import { Offline, Online } from "react-detect-offline";
+
+import Modal from './Modal';
 
 const Weather = () => {
     const weather = useSelector(state => state.weather);
-    const errMsg = useSelector(state => state.errMsg.errMsg);
-    const [current, setCurrent] = useState('');
-    const dispatch = useDispatch();
+    
+    let [dayArr, setDayArr] = useState([]);
     useEffect(() => {
-        dispatch({
-            type: 'SET_CITY_LOADING'
-        })
-        axios.get('https://extreme-ip-lookup.com/json')
-            .then(
-                (res) => {
-                    dispatch(getCurrentCity(res.data.city))
-                    setCurrent(res.data.city)
-                }
-            )
-            .catch((err) => {
-                dispatch({
-                    type: 'SET_CITY_LOADING'
-                })
-                dispatch({
-                    type: 'SET_ERROR',
-                    payload: 'Your current location could not be found, Kindly search for another city.'
-                })
-            })
-    }, []
-    )
+        let dayArr2 = []
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let d = new Date();
+        for (let index = 0; index < 5; index++) {
+            dayArr2.push(days[d.getDay()])
+            d.setDate(d.getDate() + 1)
 
+        }
+        setDayArr([...dayArr2])
+    }, [])
     let weatherImage = (icon) => {
+        
         if (icon === 1) {
             return '/weather/01-s.png';
         } else if (icon === 2) {
@@ -125,6 +114,7 @@ const Weather = () => {
                 {
                     weather.loading ?
                     <>
+                        <Modal/>
                             <div className='text-center'>
                                 <p className='text-light'>Loading...</p>
                                 <h1 className='text-light head'>0&deg;</h1>
@@ -134,7 +124,7 @@ const Weather = () => {
                             <div className='div-down text-center'>
                                 <div className="container day">
                                     <div className="flag-2">
-                                        <p className='text-light'>Monday</p>
+                                        <p className='text-light'>loading</p>
                                     </div>
                                     <div className="flag-2">
                                         <img src="/weather/06-s.png" alt="" height='30' />
@@ -145,7 +135,7 @@ const Weather = () => {
                                 </div>
                                 <div className="container day">
                                     <div className="flag-2">
-                                        <p className='text-light'>Tuesday</p>
+                                        <p className='text-light'>loading</p>
                                     </div>
                                     <div className="flag-2">
                                         <img src="/weather/06-s.png" alt="" height='30' />
@@ -156,7 +146,7 @@ const Weather = () => {
                                 </div>
                                 <div className="container day">
                                     <div className="flag-2">
-                                        <p className='text-light'>Wednesday</p>
+                                        <p className='text-light'>loading</p>
                                     </div>
                                     <div className="flag-2">
                                         <img src="/weather/06-s.png" alt="" height='30' />
@@ -167,7 +157,7 @@ const Weather = () => {
                                 </div>
                                 <div className="container day">
                                     <div className="flag-2">
-                                        <p className='text-light'>Thursday</p>
+                                        <p className='text-light'>loading</p>
                                     </div>
                                     <div className="flag-2">
                                         <img src="/weather/06-s.png" alt="" height='30' />
@@ -178,7 +168,7 @@ const Weather = () => {
                                 </div>
                                 <div className="container day">
                                     <div className="flag-2">
-                                        <p className='text-light'>Friday</p>
+                                        <p className='text-light'>loading</p>
                                     </div>
                                     <div className="flag-2">
                                         <img src="/weather/06-s.png" alt="" height='30' />
@@ -192,72 +182,72 @@ const Weather = () => {
                     </> :
                     <>
                             {weather.city.map( city => (
-                                <>
+                                <div key='der'>
                                     <div className='text-center'>
-                                        <p className='text-light'>{city.location.name}</p>
-                                        <h1 className='text-light head'>{city.current.temperature}&deg;</h1>
-                                        <p className='text-light'>18&deg;/18&deg;</p>
-                                        <img src="/weather/01-s.png" alt="" height='100' />
+                                        <p className='text-light'>{weather.current}</p>
+                                        <h1 className='text-light head'>{city.DailyForecasts[0].Temperature.Minimum.Value}&deg;</h1>
+                                        <p className='text-light'>{city.DailyForecasts[0].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[0].Temperature.Maximum.Value}&deg;</p>
+                                        <img src={weatherImage(city.DailyForecasts[0].Day.Icon)} alt="" height='100' />
                                     </div>
                                     <div className='div-down text-center'>
                                         <div className="container day">
                                             <div className="flag-2">
-                                                <p className='text-light'>Monday</p>
+                                                <p className='text-light'>{dayArr[0]}</p>
                                             </div>
                                             <div className="flag-2">
-                                                <img src="/weather/06-s.png" alt="" height='30' />
+                                                <img src={weatherImage(city.DailyForecasts[0].Day.Icon)} alt="" height='30' />
                                             </div>
                                             <div className="flag-2">
-                                                <p className='text-light'>18&deg;/18&deg;</p>
-                                            </div>
-                                        </div>
-                                        <div className="container day">
-                                            <div className="flag-2">
-                                                <p className='text-light'>Tuesday</p>
-                                            </div>
-                                            <div className="flag-2">
-                                                <img src="/weather/06-s.png" alt="" height='30' />
-                                            </div>
-                                            <div className="flag-2">
-                                                <p className='text-light'>18&deg;/18&deg;</p>
+                                                <p className='text-light'>{city.DailyForecasts[0].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[0].Temperature.Maximum.Value}&deg;</p>
                                             </div>
                                         </div>
                                         <div className="container day">
                                             <div className="flag-2">
-                                                <p className='text-light'>Wednesday</p>
+                                                <p className='text-light'>{dayArr[1]}</p>
                                             </div>
                                             <div className="flag-2">
-                                                <img src="/weather/06-s.png" alt="" height='30' />
+                                                <img src={weatherImage(city.DailyForecasts[1].Day.Icon)} alt="" height='30' />
                                             </div>
                                             <div className="flag-2">
-                                                <p className='text-light'>18&deg;/18&deg;</p>
-                                            </div>
-                                        </div>
-                                        <div className="container day">
-                                            <div className="flag-2">
-                                                <p className='text-light'>Thursday</p>
-                                            </div>
-                                            <div className="flag-2">
-                                                <img src="/weather/06-s.png" alt="" height='30' />
-                                            </div>
-                                            <div className="flag-2">
-                                                <p className='text-light'>18&deg;/18&deg;</p>
+                                                <p className='text-light'>{city.DailyForecasts[1].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[1].Temperature.Maximum.Value}&deg;</p>
                                             </div>
                                         </div>
                                         <div className="container day">
                                             <div className="flag-2">
-                                                <p className='text-light'>Friday</p>
+                                                <p className='text-light'>{dayArr[2]}</p>
                                             </div>
                                             <div className="flag-2">
                                                 <img src="/weather/06-s.png" alt="" height='30' />
                                             </div>
                                             <div className="flag-2">
-                                                <p className='text-light'>18&deg;/18&deg;</p>
+                                                <p className='text-light'>{city.DailyForecasts[2].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[2].Temperature.Maximum.Value}&deg;</p>
+                                            </div>
+                                        </div>
+                                        <div className="container day">
+                                            <div className="flag-2">
+                                                <p className='text-light'>{dayArr[3]}</p>
+                                            </div>
+                                            <div className="flag-2">
+                                                <img src={weatherImage(city.DailyForecasts[3].Day.Icon)} alt="" height='30' />
+                                            </div>
+                                            <div className="flag-2">
+                                                <p className='text-light'>{city.DailyForecasts[3].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[3].Temperature.Maximum.Value}&deg;</p>
+                                            </div>
+                                        </div>
+                                        <div className="container day">
+                                            <div className="flag-2">
+                                                <p className='text-light'>{dayArr[4]}</p>
+                                            </div>
+                                            <div className="flag-2">
+                                                <img src={weatherImage(city.DailyForecasts[4].Day.Icon)} alt="" height='30' />
+                                            </div>
+                                            <div className="flag-2">
+                                                <p className='text-light'>{city.DailyForecasts[4].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[4].Temperature.Maximum.Value}&deg;</p>
                                             </div>
                                         </div>
 
                                     </div>
-                                </>
+                                </div>
                             ))}
                     </>
                 }
