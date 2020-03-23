@@ -31,6 +31,7 @@ function SimpleDialog(props) {
     };
 
     const handleListItemClick = value => {
+        dispatch(getCurrentCity(res.data[0].Key))
         onClose(value);
     };
 
@@ -40,7 +41,7 @@ function SimpleDialog(props) {
             <List>
                 {modal.map(city => (
                     <>
-                        <ListItem button onClick={() => handleListItemClick(city)} key={city}>
+                        <ListItem button onClick={() => handleListItemClick(city.Key)} key={city}>
                             <ListItemText primary={city.LocalizedName} secondary={city.Country.LocalizedName} />
                         </ListItem>
                         <Divider />
@@ -79,18 +80,18 @@ const Modal = () => {
         axios.get('https://extreme-ip-lookup.com/json')
             .then(
                 (res) => {
-                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3&q=lagos`)
+                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3&q=ibadan`)
                         .then(
                             (res) => {
                                 if (res.data.length === 1) {
                                     localStorage.setItem('city', 'Ibadan');
                                     dispatch(getCurrentCity(res.data[0].Key))
                                 } else if (res.data.length > 1) {
-                                    console.log('no');
                                     dispatch({
                                         type: 'DISPLAY_CITIES',
                                         payload: res.data
                                     })
+                                    setOpen(true);
                                     
                                 } else {
                                     console.log('maybe');
@@ -119,7 +120,7 @@ const Modal = () => {
         <div>
             
             
-            <SimpleDialog selectedValue={selectedValue} open={modal? true : false} onClose={handleClose} />
+            <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
         </div>
     )
 }

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const getCity = (city) => dispatch => {
+export const getCity = (cityKey) => dispatch => {
     axios
-        .get(`http://api.weatherstack.com/current?access_key=c19a75b33166036ceb5889a1f90b5dc6&query=${city}`)
+        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3`)
         .then(res => {
             if (res.data.success === false) {
                 dispatch({
@@ -18,16 +18,17 @@ export const getCity = (city) => dispatch => {
                     payload: res.data
                 })
             }
+
         })
-        .catch(err =>
-            {
-                dispatch({
-                type: 'SET_CITY_LOADING'
-            })
+        .catch(err => {
             dispatch({
                 type: 'SET_ERROR',
-                payload: 'Weather informations about the location you entered could not be found, Kindly search for another city.'
-            })}
+                payload: 'Weather informations about your current location could not be found, Kindly search for another city.'
+            })
+            dispatch({
+                type: 'SET_CITY_LOADING'
+            })
+        }
         );
 };
 
