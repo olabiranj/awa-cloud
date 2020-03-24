@@ -23,13 +23,13 @@ body {
 .bg{
     height: 500px;
     opacity: 0.2;
-	margin-top: 50px;
+	margin-top: 10px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 20px 80px 0 rgba(0, 0, 0, 0.19);
 }
 .bg-skeleton{
     height: 500px;
     opacity: 0.2;
-    margin-top: 100px;
+    margin-top: 10px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 20px 80px 0 rgba(0, 0, 0, 0.19);
 }
 .bg2{
@@ -48,6 +48,11 @@ body {
     font-size: 100px;
 }
 
+ul h1{
+	color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
 .skeleton{
     height: 30px;
     background: #e0e0eb;
@@ -57,7 +62,7 @@ body {
 
 /* search input styles */
 .container-s {
-	 position: absolute;
+	 /* position: absolute; */
 	 margin: auto;
 	 top: 0;
 	 left: 0;
