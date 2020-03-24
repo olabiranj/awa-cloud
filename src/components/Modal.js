@@ -71,7 +71,8 @@ const Modal = () => {
         axios.get('https://extreme-ip-lookup.com/json')
             .then(
                 (res) => {
-                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=K7TMGAvvbVNs0jViW50HIjZQQxxqCk71&q=${res.data.city}`)
+                    console.log(res.data)
+                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=K7TMGAvvbVNs0jViW50HIjZQQxxqCk71&q=abuja`)
                         .then(
                             (res) => {
                                 if (res.data.length === 1) {
