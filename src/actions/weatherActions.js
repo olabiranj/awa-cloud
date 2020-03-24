@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getCity = (cityKey) => dispatch => {
     axios
-        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3`)
+        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=936gJtwI6940E0YzMK5JYhv1eT3JPjQg`)
         .then(res => {
             if (res.data.success === false) {
                 dispatch({
@@ -23,7 +23,7 @@ export const getCity = (cityKey) => dispatch => {
         .catch(err => {
             dispatch({
                 type: 'SET_ERROR',
-                payload: 'Weather informations about your current location could not be found, Kindly search for another city.'
+                payload: 'Weather informations about the location you entered could not be found, Kindly search for another city.'
             })
             dispatch({
                 type: 'SET_CITY_LOADING'
@@ -34,7 +34,7 @@ export const getCity = (cityKey) => dispatch => {
 
 export const getCurrentCity = (cityKey) => dispatch => {
     axios
-        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3`)
+        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=936gJtwI6940E0YzMK5JYhv1eT3JPjQg`)
         .then(res => {
             if (res.data.success === false) {
                 dispatch({

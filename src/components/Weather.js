@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 // import { Offline, Online } from "react-detect-offline";
 
-import Modal from './Modal';
 
 const Weather = () => {
     const weather = useSelector(state => state.weather);
@@ -114,9 +113,9 @@ const Weather = () => {
                 {
                     weather.loading ?
                     <>
-                        <Modal/>
+                        
                             <div className='text-center'>
-                                <p className='text-light'>Loading...</p>
+                                <p className='text-light'>{errMsg ? errMsg : 'Loading...'}</p>
                                 <h1 className='text-light head'>0&deg;</h1>
                                 <p className='text-light'>0&deg;/0&deg;</p>
                                 <img src="/weather/01-s.png" alt="" height='100' />
@@ -130,7 +129,7 @@ const Weather = () => {
                                         <img src="/weather/06-s.png" alt="" height='30' />
                                     </div>
                                     <div className="flag-2">
-                                        <p className='text-light'>18&deg;/18&deg;</p>
+                                        <p className='text-light'>0&deg;/0&deg;</p>
                                     </div>
                                 </div>
                                 <div className="container day">
@@ -141,7 +140,7 @@ const Weather = () => {
                                         <img src="/weather/06-s.png" alt="" height='30' />
                                     </div>
                                     <div className="flag-2">
-                                        <p className='text-light'>18&deg;/18&deg;</p>
+                                        <p className='text-light'>0&deg;/0&deg;</p>
                                     </div>
                                 </div>
                                 <div className="container day">
@@ -152,7 +151,7 @@ const Weather = () => {
                                         <img src="/weather/06-s.png" alt="" height='30' />
                                     </div>
                                     <div className="flag-2">
-                                        <p className='text-light'>18&deg;/18&deg;</p>
+                                        <p className='text-light'>0&deg;/0&deg;</p>
                                     </div>
                                 </div>
                                 <div className="container day">
@@ -163,7 +162,7 @@ const Weather = () => {
                                         <img src="/weather/06-s.png" alt="" height='30' />
                                     </div>
                                     <div className="flag-2">
-                                        <p className='text-light'>18&deg;/18&deg;</p>
+                                        <p className='text-light'>0&deg;/0&deg;</p>
                                     </div>
                                 </div>
                                 <div className="container day">
@@ -174,7 +173,7 @@ const Weather = () => {
                                         <img src="/weather/06-s.png" alt="" height='30' />
                                     </div>
                                     <div className="flag-2">
-                                        <p className='text-light'>18&deg;/18&deg;</p>
+                                        <p className='text-light'>0&deg;/0&deg;</p>
                                     </div>
                                 </div>
 

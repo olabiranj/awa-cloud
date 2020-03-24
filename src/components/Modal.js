@@ -21,6 +21,9 @@ function SimpleDialog(props) {
 
     const handleListItemClick = value => {
         dispatch(getCurrentCity(value))
+        dispatch({
+            type: 'DELETE_CITIES'
+        })
         onClose(false);
     };
 

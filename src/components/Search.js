@@ -11,8 +11,14 @@ const Search = () => {
         dispatch({
             type: 'SET_CITY_LOADING'
         })
+        dispatch({
+            type: 'CLEAR_ERROR'
+        })
+        dispatch({
+            type: 'DELETE_CITIES'
+        })
         e.preventDefault();
-        axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3&q=${input}`)
+        axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=936gJtwI6940E0YzMK5JYhv1eT3JPjQg&q=${input}`)
             .then(
                 (res) => {
                     if (res.data.length === 1) {
@@ -39,6 +45,7 @@ const Search = () => {
                     payload: 'The city you entered could not be found'
                 })
             })
+        setInput('')
     }
     return(
         <div className="container col-lg-3 mt-4">
