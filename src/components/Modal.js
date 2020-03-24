@@ -68,40 +68,25 @@ const Modal = () => {
         dispatch({
             type: 'SET_CITY_LOADING'
         })
-        axios.get('https://extreme-ip-lookup.com/json')
+        
+        axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=K7TMGAvvbVNs0jViW50HIjZQQxxqCk71&q=abuja`)
             .then(
                 (res) => {
-                    console.log(res.data)
-                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=K7TMGAvvbVNs0jViW50HIjZQQxxqCk71&q=abuja`)
-                        .then(
-                            (res) => {
-                                if (res.data.length === 1) {
-                                    localStorage.setItem('city', `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`);
-                                    dispatch(getCurrentCity(res.data[0].Key))
-                                } else if (res.data.length > 1) {
-                                    dispatch({
-                                        type: 'DISPLAY_CITIES',
-                                        payload: res.data
-                                    })
-                                    localStorage.setItem('city', `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`)
-                                } else {
-                                    console.log('maybe');
-                                }
-                            }
-                        )
-                        .catch(err => console.log(err))
+                    if (res.data.length === 1) {
+                        localStorage.setItem('city', `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`);
+                        dispatch(getCurrentCity(res.data[0].Key))
+                    } else if (res.data.length > 1) {
+                        dispatch({
+                            type: 'DISPLAY_CITIES',
+                            payload: res.data
+                        })
+                        localStorage.setItem('city', `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`)
+                    } else {
+                        console.log(1);
+                    }
                 }
             )
-            .catch((err) => {
-                dispatch({
-                    type: 'SET_CITY_LOADING'
-                })
-                dispatch({
-                    type: 'SET_ERROR',
-                    payload: 'Your current location could not be found, Kindly search for another city.'
-                })
-            })
-
+           
     }, []
     )
 
