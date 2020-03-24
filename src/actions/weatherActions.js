@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getCity = (cityKey) => dispatch => {
     axios
-        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=936gJtwI6940E0YzMK5JYhv1eT3JPjQg`)
+        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=K7TMGAvvbVNs0jViW50HIjZQQxxqCk71`)
         .then(res => {
             if (res.data.success === false) {
                 dispatch({
@@ -34,7 +34,7 @@ export const getCity = (cityKey) => dispatch => {
 
 export const getCurrentCity = (cityKey) => dispatch => {
     axios
-        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=936gJtwI6940E0YzMK5JYhv1eT3JPjQg`)
+        .get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=K7TMGAvvbVNs0jViW50HIjZQQxxqCk71`)
         .then(res => {
             if (res.data.success === false) {
                 dispatch({
