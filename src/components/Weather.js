@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 // import { Offline, Online } from "react-detect-offline";
 
 
@@ -19,6 +19,12 @@ const Weather = () => {
         }
         setDayArr([...dayArr2])
     }, [])
+
+    let toCelcius = (faharent) => {
+        let C = (5 / 9) * (faharent - 32)
+        return Math.round(C);
+    }
+
     let weatherImage = (icon) => {
         
         if (icon === 1) {
@@ -184,8 +190,8 @@ const Weather = () => {
                                 <div key='der'>
                                     <div className='text-center'>
                                         <p className='text-light'>{weather.current}</p>
-                                        <h1 className='text-light head'>{city.DailyForecasts[0].Temperature.Minimum.Value}&deg;</h1>
-                                        <p className='text-light'>{city.DailyForecasts[0].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[0].Temperature.Maximum.Value}&deg;</p>
+                                        <h1 className='text-light head'>{toCelcius(city.DailyForecasts[0].Temperature.Minimum.Value)}&deg;</h1>
+                                        <p className='text-light'>{toCelcius(city.DailyForecasts[0].Temperature.Minimum.Value)}&deg;/{toCelcius(city.DailyForecasts[0].Temperature.Maximum.Value)}&deg;</p>
                                         <img src={weatherImage(city.DailyForecasts[0].Day.Icon)} alt="" height='100' />
                                     </div>
                                     <div className='div-down text-center'>
@@ -197,7 +203,7 @@ const Weather = () => {
                                                 <img src={weatherImage(city.DailyForecasts[0].Day.Icon)} alt="" height='30' />
                                             </div>
                                             <div className="flag-2">
-                                                <p className='text-light'>{city.DailyForecasts[0].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[0].Temperature.Maximum.Value}&deg;</p>
+                                                <p className='text-light'>{toCelcius(city.DailyForecasts[0].Temperature.Minimum.Value)}&deg;/{toCelcius(city.DailyForecasts[0].Temperature.Maximum.Value)}&deg;</p>
                                             </div>
                                         </div>
                                         <div className="container day">
@@ -208,7 +214,7 @@ const Weather = () => {
                                                 <img src={weatherImage(city.DailyForecasts[1].Day.Icon)} alt="" height='30' />
                                             </div>
                                             <div className="flag-2">
-                                                <p className='text-light'>{city.DailyForecasts[1].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[1].Temperature.Maximum.Value}&deg;</p>
+                                                <p className='text-light'>{toCelcius(city.DailyForecasts[1].Temperature.Minimum.Value)}&deg;/{toCelcius(city.DailyForecasts[1].Temperature.Maximum.Value)}&deg;</p>
                                             </div>
                                         </div>
                                         <div className="container day">
@@ -219,7 +225,7 @@ const Weather = () => {
                                                 <img src="/weather/06-s.png" alt="" height='30' />
                                             </div>
                                             <div className="flag-2">
-                                                <p className='text-light'>{city.DailyForecasts[2].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[2].Temperature.Maximum.Value}&deg;</p>
+                                                <p className='text-light'>{toCelcius(city.DailyForecasts[2].Temperature.Minimum.Value)}&deg;/{toCelcius(city.DailyForecasts[2].Temperature.Maximum.Value)}&deg;</p>
                                             </div>
                                         </div>
                                         <div className="container day">
@@ -230,7 +236,7 @@ const Weather = () => {
                                                 <img src={weatherImage(city.DailyForecasts[3].Day.Icon)} alt="" height='30' />
                                             </div>
                                             <div className="flag-2">
-                                                <p className='text-light'>{city.DailyForecasts[3].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[3].Temperature.Maximum.Value}&deg;</p>
+                                                <p className='text-light'>{toCelcius(city.DailyForecasts[3].Temperature.Minimum.Value)}&deg;/{toCelcius(city.DailyForecasts[3].Temperature.Maximum.Value)}&deg;</p>
                                             </div>
                                         </div>
                                         <div className="container day">
@@ -241,7 +247,7 @@ const Weather = () => {
                                                 <img src={weatherImage(city.DailyForecasts[4].Day.Icon)} alt="" height='30' />
                                             </div>
                                             <div className="flag-2">
-                                                <p className='text-light'>{city.DailyForecasts[4].Temperature.Minimum.Value}&deg;/{city.DailyForecasts[4].Temperature.Maximum.Value}&deg;</p>
+                                                <p className='text-light'>{toCelcius(city.DailyForecasts[4].Temperature.Minimum.Value)}&deg;/{toCelcius(city.DailyForecasts[4].Temperature.Maximum.Value)}&deg;</p>
                                             </div>
                                         </div>
 

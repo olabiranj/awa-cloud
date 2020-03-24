@@ -32,12 +32,12 @@ function SimpleDialog(props) {
             <DialogTitle id="simple-dialog-title">Select the city that best match your destination</DialogTitle>
             <List>
                 {modal.map(city => (
-                    <>
+                    <div key={city.Key}>
                         <ListItem button onClick={() => handleListItemClick(city.Key)} >
                             <ListItemText primary={city.LocalizedName} secondary={city.Country.LocalizedName} />
                         </ListItem>
                         <Divider />
-                    </>
+                    </div>
                 ))}
                 
                 
@@ -71,7 +71,7 @@ const Modal = () => {
         axios.get('https://extreme-ip-lookup.com/json')
             .then(
                 (res) => {
-                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=7LiG257r9k285GCrDgHLQ7N1NArktXY3&q=${res.data.city}`)
+                    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=936gJtwI6940E0YzMK5JYhv1eT3JPjQg&q=${res.data.city}`)
                         .then(
                             (res) => {
                                 if (res.data.length === 1) {
@@ -110,7 +110,7 @@ const Modal = () => {
         <div>
             
             
-            <SimpleDialog open={modal ? true : false} onClose={handleClose} />
+            <SimpleDialog open={modal ? true : open} onClose={handleClose} />
         </div>
     )
 }
