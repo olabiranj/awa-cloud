@@ -18,7 +18,7 @@ const Search = () => {
             type: 'DELETE_CITIES'
         })
         e.preventDefault();
-        axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=K7TMGAvvbVNs0jViW50HIjZQQxxqCk71&q=${input}`)
+        axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=kH2TWY2TmQ3USiRPnvyZPPweMBM1ZIt7&q=${input}`)
             .then(
                 (res) => {
                     if (res.data.length === 1) {

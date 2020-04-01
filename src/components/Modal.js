@@ -69,7 +69,7 @@ const Modal = () => {
             type: 'SET_CITY_LOADING'
         })
         
-        axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=K7TMGAvvbVNs0jViW50HIjZQQxxqCk71&q=abuja`)
+        axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=kH2TWY2TmQ3USiRPnvyZPPweMBM1ZIt7&q=abuja`)
             .then(
                 (res) => {
                     if (res.data.length === 1) {
@@ -83,7 +83,14 @@ const Modal = () => {
                         localStorage.setItem('city', `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`)
                     } else {
                         console.log(1);
-                    }
+                        dispatch({
+                            type: 'SET_CITY_LOADING'
+                        })
+                        dispatch({
+                            type: 'SET_ERROR',
+                            payload: 'The city you entered could not be found'
+                        })
+                }
                 }
             )
            

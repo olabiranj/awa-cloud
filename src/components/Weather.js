@@ -119,14 +119,13 @@ const Weather = () => {
                 {
                     weather.loading ?
                     <>
-                        
                             <div className='text-center'>
                                 <p className='text-light'>{errMsg ? errMsg : 'Loading...'}</p>
-                                <h1 className='text-light head'>0&deg;</h1>
-                                <p className='text-light'>0&deg;/0&deg;</p>
-                                <img src="/weather/01-s.png" alt="" height='100' />
+                                <h1 className='text-light head d-opacity'>0&deg;</h1>
+                                <p className='text-light d-opacity'>0&deg;/0&deg;</p>
+                                <img className='d-opacity' src="/weather/01-s.png" alt="" height='100' />
                             </div>
-                            <div className='div-down text-center'>
+                            <div className='div-down text-center d-opacity'>
                                 <div className="container day">
                                     <div className="flag-2">
                                         <p className='text-light'>loading</p>
