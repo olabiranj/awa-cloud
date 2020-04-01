@@ -33,6 +33,13 @@ const Search = () => {
 
                     } else {
                         console.log('maybe');
+                        dispatch({
+                            type: 'SET_CITY_LOADING'
+                        })
+                        dispatch({
+                            type: 'SET_ERROR',
+                            payload: 'The city you entered could not be found'
+                        })
                     }
                 }
             )
