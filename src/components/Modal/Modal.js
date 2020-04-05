@@ -2,7 +2,7 @@ import React, { useEffect} from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
 // import { Offline, Online } from "react-detect-offline";
-import { getCurrentCity } from "../actions/weatherActions";
+import { getCurrentCity } from "../../actions/weatherActions";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
@@ -93,7 +93,7 @@ const Modal = () => {
                 }
                 }
             )
-           
+    // eslint-disable-next-line
     }, []
     )
 

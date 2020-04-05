@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
-import { getCity} from '../actions/weatherActions';
+import { getCity} from '../../actions/weatherActions';
 
 
 const Search = () => {
@@ -32,7 +32,6 @@ const Search = () => {
                         localStorage.setItem('city', `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`)
 
                     } else {
-                        console.log('maybe');
                         dispatch({
                             type: 'SET_CITY_LOADING'
                         })
@@ -57,8 +56,9 @@ const Search = () => {
     return(
         <div className="container col-lg-3 mt-4">
             <div className="container-s">
-                <form action="" onSubmit={submit}>
+                <form data-testid='form' action="" onSubmit={submit}>
                     <input type="text"
+                        data-testid = 'input'
                         placeholder='Search City...'
                         value={input}
                         onChange={e => setInput(e.target.value)}/>
