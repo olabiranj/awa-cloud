@@ -21,13 +21,13 @@
 //     afterEach(() => {
 //         useSelector.mockClear();
 //     })
-        
+
 //     test('Modal test', () => {
 //         const { getByText } = render(<SimpleDialog/>);
 //         const title = getByText(/Select the city that best match your destination/i);
 //         expect(title).toBeInTheDocument();
 //     })
 // })
-test('renders', () => {
-    expect(true).toBeTruthy();
-})
+test("renders", () => {
+  expect(true).toBeTruthy();
+});
