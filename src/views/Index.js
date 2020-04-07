@@ -5,13 +5,13 @@ import { Modal } from "../components/Modal/Modal";
 import Header from "../components/Header/Header";
 
 const Index = () => {
-  return (
-    <>
-      <Header />
-      <Modal />
-      <Search />
-      <Weather />
-    </>
-  );
+    return (
+        <>
+            <Header />
+            <Modal />
+            <Search />
+            <Weather />
+        </>
+    );
 };
 export default Index;

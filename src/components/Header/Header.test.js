@@ -6,9 +6,9 @@ import Header from "./Header";
 afterEach(cleanup);
 
 test("Header Test", () => {
-  const { getByText } = render(<Header />);
-  const title = getByText(/Awa Cloud/i);
-  expect(title).toBeInTheDocument();
+    const { getByText } = render(<Header />);
+    const title = getByText(/Awa Cloud/i);
+    expect(title).toBeInTheDocument();
 });
 
 // test('Header Test 2', () => {

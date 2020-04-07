@@ -4,7 +4,7 @@ import modalReducer from "./modalReducer";
 import errorReducer from "./errorReducer";
 
 export default combineReducers({
-  weather: weatherReducer,
-  modal: modalReducer,
-  errMsg: errorReducer,
+    weather: weatherReducer,
+    modal: modalReducer,
+    errMsg: errorReducer,
 });
