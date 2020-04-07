@@ -10,8 +10,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 
-function SimpleDialog(props) {
-    const modal = useSelector(state => state.modal.allCities);
+export function SimpleDialog(props) {
+    const cities = useSelector(state => state.modal.allCities);
     const dispatch = useDispatch();
     const { onClose, selectedValue, open } = props;
 
@@ -28,27 +28,27 @@ function SimpleDialog(props) {
     };
 
     return (
-        <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-            <DialogTitle id="simple-dialog-title">Select the city that best match your destination</DialogTitle>
-            <List>
-                {modal.map(city => (
-                    <div key={city.Key}>
-                        <ListItem button onClick={() => handleListItemClick(city.Key)} >
-                            <ListItemText primary={city.LocalizedName} secondary={city.Country.LocalizedName} />
-                        </ListItem>
-                        <Divider />
-                    </div>
-                ))}
-                
-                
-            </List>
-        </Dialog>
+            <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+                <DialogTitle id="simple-dialog-title">Select the city that best match your destination</DialogTitle>
+                <List>
+                    {cities.map(city => (
+                        <div key={city.Key}>
+                            <ListItem button onClick={() => handleListItemClick(city.Key)} >
+                                <ListItemText primary={city.LocalizedName} secondary={city.Country.LocalizedName} />
+                            </ListItem>
+                            <Divider />
+                        </div>
+                    ))}
+
+
+                </List> 
+            </Dialog>
     );
 }
 
 
 
-const Modal = () => {
+export const Modal = () => {
     const modal = useSelector(state => state.modal.hasContents);
     // const errMsg = useSelector(state => state.errMsg.errMsg);
     const dispatch = useDispatch();
@@ -97,14 +97,9 @@ const Modal = () => {
     }, []
     )
 
-    
-
     return (
         <div>
-            
-            
             <SimpleDialog open={modal ? true : open} onClose={handleClose} />
         </div>
     )
 }
-export default Modal;

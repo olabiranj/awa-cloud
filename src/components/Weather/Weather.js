@@ -186,7 +186,7 @@ const Weather = () => {
                     </> :
                     <>
                             {weather.city.map( city => (
-                                <div key='der'>
+                                <div data-testid='weatherDiv' key='der'>
                                     <div className='text-center'>
                                         <p className='text-light'>{weather.current}</p>
                                         <h1 className='text-light head'>{toCelcius(city.DailyForecasts[0].Temperature.Minimum.Value)}&deg;</h1>

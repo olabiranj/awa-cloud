@@ -24,5 +24,4 @@ test('Search with cities', () => {
 
     expect(axiosMock.get).toHaveBeenCalledTimes(1);
     expect(axiosMock.get).toHaveBeenCalledWith(url);
-
 })
