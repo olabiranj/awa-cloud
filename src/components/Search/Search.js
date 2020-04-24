@@ -19,7 +19,7 @@ const Search = () => {
         e.preventDefault();
         axios
             .get(
-                `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=kH2TWY2TmQ3USiRPnvyZPPweMBM1ZIt7&q=${input}`
+                `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${process.env.REACT_APP_API_KEY}&q=${input}`
             )
             .then((res) => {
                 if (res.data.length === 1) {

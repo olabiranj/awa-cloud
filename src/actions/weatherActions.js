@@ -3,7 +3,7 @@ import axios from "axios";
 export const getCity = (cityKey) => (dispatch) => {
     axios
         .get(
-            `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=kH2TWY2TmQ3USiRPnvyZPPweMBM1ZIt7`
+            `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${process.env.REACT_APP_API_KEY}`
         )
         .then((res) => {
             if (res.data.success === false) {
@@ -36,7 +36,7 @@ export const getCity = (cityKey) => (dispatch) => {
 export const getCurrentCity = (cityKey) => (dispatch) => {
     axios
         .get(
-            `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=kH2TWY2TmQ3USiRPnvyZPPweMBM1ZIt7`
+            `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${process.env.REACT_APP_API_KEY}`
         )
         .then((res) => {
             if (res.data.success === false) {
