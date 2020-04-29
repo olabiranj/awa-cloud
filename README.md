@@ -1,8 +1,6 @@
 This is a weather app created with react.js.
 It gives gives the atmospheric condition of all cities in the world.
 
-A Github Authentication app made with react. It serves as a guide for react developers who intends integrating react with OAuth provided by github.
-
 ### Live
 
 https://awa-cloud.netlify.app/
