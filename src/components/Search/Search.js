@@ -29,14 +29,11 @@ const Search = () => {
                     );
                     dispatch(getCity(res.data[0].Key));
                 } else if (res.data.length > 1) {
-                    dispatch({
-                        type: "DISPLAY_CITIES",
-                        payload: res.data,
-                    });
                     localStorage.setItem(
                         "city",
                         `${res.data[0].LocalizedName}, ${res.data[0].Country.LocalizedName}`
                     );
+                    dispatch(getCity(res.data[0].Key));
                 } else {
                     dispatch({
                         type: "SET_CITY_LOADING",
