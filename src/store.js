@@ -5,13 +5,13 @@ import rootReducer from "./reducer";
 const initialState = {};
 
 const middleWare = [thunk];
-
+// eslint-disable-next-line
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const devTools =
     process.env.NODE_ENV === "production"
         ? applyMiddleware(...middleWare)
-        : composeEnhancers(applyMiddleware(...middleWare));
+        : applyMiddleware(...middleWare);
 
 const store = createStore(rootReducer, initialState, devTools);
 
